@@ -1,0 +1,33 @@
+#usda 1.0
+(
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "stone01"
+{
+    def Xform "render"
+    {
+        uniform token purpose = "render"
+
+        def "shape" (
+            prepend references = @./stone01.hero.usd@
+        )
+        {
+        }
+    }
+
+    def Xform "proxy"
+    {
+        uniform token purpose = "proxy"
+
+        def "shape" (
+            prepend references = @./stone01.proxy.usd@
+        )
+        {
+        }
+    }
+}
+
