@@ -9,15 +9,20 @@
     upAxis = "Y"
 )
 
-def Xform "stone01"
+def Xform "stone01" (
+    variants = {
+        string representation = "hero"
+    }
+    append variantSets = "representation"
+)
 {
     def Xform "render"
     {
+        rel proxyPrim = </stone01/proxy>
         uniform token purpose = "render"
 
-        def "shape" (
+        over "shape" (
             prepend apiSchemas = ["MaterialBindingAPI"]
-            prepend references = @./stone01.hero.usd@
         )
         {
             rel material:binding = </stone01/render/looks/stone_render>
@@ -34,6 +39,30 @@ def Xform "stone01"
         )
         {
             rel material:binding = </stone01/proxy/looks/stone_proxy>
+        }
+    }
+    variantSet "representation" = {
+        "hero" {
+            over "render"
+            {
+                def "shape" (
+                    prepend references = @./stone01.hero.usd@
+                )
+                {
+                }
+            }
+
+        }
+        "proxy" {
+            over "render"
+            {
+                def "shape" (
+                    prepend references = @./stone01.proxy.usd@
+                )
+                {
+                }
+            }
+
         }
     }
 }
