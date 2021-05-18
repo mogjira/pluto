@@ -1,1 +1,1 @@
-Textures go here.
+Global textures go here.

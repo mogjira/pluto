@@ -2,6 +2,9 @@
 (
     framesPerSecond = 24
     metersPerUnit = 1
+    subLayers = [
+        @./stone01.shading.usda@
+    ]
     timeCodesPerSecond = 24
     upAxis = "Y"
 )
@@ -13,9 +16,11 @@ def Xform "stone01"
         uniform token purpose = "render"
 
         def "shape" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
             prepend references = @./stone01.hero.usd@
         )
         {
+            rel material:binding = </stone01/render/looks/stone_render>
         }
     }
 
@@ -24,9 +29,11 @@ def Xform "stone01"
         uniform token purpose = "proxy"
 
         def "shape" (
+            prepend apiSchemas = ["MaterialBindingAPI"]
             prepend references = @./stone01.proxy.usd@
         )
         {
+            rel material:binding = </stone01/proxy/looks/stone_proxy>
         }
     }
 }

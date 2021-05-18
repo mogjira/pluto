@@ -1,0 +1,15 @@
+#usda 1.0
+(
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def "stone01" (
+    kind = "component"
+    prepend payload = @./stone01.payload.usda@</stone01>
+)
+{
+}
+
